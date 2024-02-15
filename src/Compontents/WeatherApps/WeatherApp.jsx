@@ -6,7 +6,7 @@ import drizzle_icon from "../Assets/drizzle.png";
 import rain_icon from "../Assets/rain.png";
 import snow_icon from "../Assets/snow.png";
 import wind_icon from "../Assets/wind.png";
-import cloud_icon from "../Compontents/Assets/cloud.png";
+import cloud_icon from "../Assets/cloud.png";
 import clear_icon from "../Assets/clear.png";
 import humidity_icon from "../Assets/humidity.png";
 
@@ -15,15 +15,17 @@ const WeatherApp = async() => {
 
     const [wicon,setWicon] = useState(cloud_icon);
 
-    const search=()=>{
-        const element=document.getElementsByClassName("city");
+    const search= async ()=>{
+        const element=document.getElementsByClassName("cityInput");
         if(element[0].value==="")
         {
             return 0;
         }
        
-        let url=`https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${API_KEY}`
+        let url=`https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${API_KEY}`;
         let response= await fetch (url);
+       
+
         let data = await response.json();
         const humidity =document.getElementsByClassName("humidity-percent");
         const wind=document.getElementsByClassName("wind-rate");
@@ -55,7 +57,7 @@ const WeatherApp = async() => {
         }
         else if(data.weather[0].icon==="09d" || data.weather[0].icon==="09n")
         {
-            setWicon(rain_icon_icon);
+            setWicon(rain_icon);
         }
         else if(data.weather[0].icon==="10d" || data.weather[0].icon==="10n")
         {
@@ -97,7 +99,7 @@ const WeatherApp = async() => {
             <div className="element">
                 <img src={wind_icon} alt=""  className='icon'/>
                 <div className="data">
-                    <div className="humidity-percent">64%</div>
+                    <div className="wind-rate">18 km/h</div>
                     <div className="text">Wind Speed</div>
 
                 </div>
