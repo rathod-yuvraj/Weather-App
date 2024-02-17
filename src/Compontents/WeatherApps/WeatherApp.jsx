@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import './WeatherApp.css'
 import search_icon from "../Assets/search.png"
 import drizzle_icon from "../Assets/drizzle.png";
@@ -10,7 +9,7 @@ import cloud_icon from "../Assets/cloud.png";
 import clear_icon from "../Assets/clear.png";
 import humidity_icon from "../Assets/humidity.png";
 
-const WeatherApp = async() => {
+const WeatherApp = () => {
     let API_KEY= "0a4aa3e922d90ae4909ad2c58909b029" ;
 
     const [wicon,setWicon] = useState(cloud_icon);
@@ -36,7 +35,7 @@ const WeatherApp = async() => {
         humidity[0].innerHTML =data.main.humidity + " %";
         wind[0].innerHTML=data.wind.speed+ " km/h" ;
 
-        temprature[0].innerHTML=data.main.temp +" c";
+        temprature[0].innerHTML=data.main.temp +"°c";
         location[0].innerHTML=data.name;
 
         if(data.weather[0].icon==="01d" || data.weather[0].icon==="01n")
